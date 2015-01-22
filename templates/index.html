@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title> Get a movie from</title>
+</head>
+<body>
+	<form action = "/" method= "post">
+		<label for="Film"> "Recup de movie"</label>
+		<input type="string" id="film" name="film">
+		<br />
+		<button> Rechercher</button>
+	</form>
+
+	{% if movieapi %}
+  <h3>Get Movie From MODB API {{ movieapi}}!</h3>
+{% else %}
+  <p>Remplir le champ pour récupérer des films</p>
+{% endif %}
+
+
+</body>
+</html>
+
+
+
+
