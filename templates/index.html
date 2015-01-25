@@ -5,23 +5,61 @@
 	<title> Get a movie from</title>
 </head>
 <body>
+	<h1> Get film from OMDB</h1>
 	<form action = "/" method= "post">
-		<label for="Film"> "Recup de movie"</label>
-		<input type="string" id="film" name="film">
+		<label for="phrase"> Entrez un nom de film"</label>
+		<input type="text" id="film" name="film">
 		<br />
 		<button> Rechercher</button>
 	</form>
 
-	{% if movieapi %}
-  <h3>Get Movie From MODB API {{ movieapi}}!</h3>
-{% else %}
-  <p>Remplir le champ pour récupérer des films</p>
+	{% if film %}
+	<h3>Get Movie From MODB API {{ film}}!</h3>
+	{% else %}
+	{% if omdb_request.Response == 'False' %}
+	<div id="content">
+	The movie {{film}} film non trouvé mettre un autre!
+	{% else %}
+<div id="content">
+The movie name is <strong>{{film}}</strong> !
+</div>
+<p>Plot : {{omdb_request.Plot}}</p>
+<p>Released : {{omdb_request.Released}}</p>
 {% endif %}
+{% endif %}
+</div>
+</div>
+</body>
+</html>
 
 
+<!--  </head>
+<body>
+<div class="container">
+<h1>Omdb api and Flask</h1>
+<form method="post" action="{{ url_for('api_root') }}">
+<label for="sentence">Please enter your movie name:</label>
+<input type="text" name="movie_name" /><br />
+<input type="submit" />
+</form>
+{% if movie_name %}
+{% if omdb_request.Response == 'False' %}
+<div id="content">
+The movie {{movie_name}} can't be found, do another search !
+{% else %}
+<div id="content">
+The movie name is <strong>{{movie_name}}</strong> !
+</div>
+<p>Plot : {{omdb_request.Plot}}</p>
+<p>Released : {{omdb_request.Released}}</p>
+{% endif %}
+{% endif %}
+</div>
+</div>
 </body>
 </html>
 
 
 
 
+ -->
